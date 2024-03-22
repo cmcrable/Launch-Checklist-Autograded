@@ -80,9 +80,8 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  
      planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
         response.json().then( function(json){
-            let data = json; 
-            console.log(data);
-            return data;
+            console.log([json[0].name, json[1].name, json[2].name, json[3].name, json[4].name, json[5].name]);
+            return result = [json[0].name, json[1].name, json[2].name, json[3].name, json[4].name, json[5].name];
         })
     });
          //console.log("??", JSON.stringify(planetsReturned,null,2));
