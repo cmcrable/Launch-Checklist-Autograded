@@ -18,9 +18,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  }
  
  function validateInput(testInput) {
-    // 3 to 4 if statements, about 8 lines
-    // testInput will be the text of the input (pilot, copilot, fuelLevel, cargoLevel, etc)
-    // return "Empty", "Not a Number", or "Is a Number"
     if (testInput === "") {
         return "Empty"
     }
@@ -34,7 +31,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  }
  
  function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    // bulk of the code
     list = document.getElementById("faultyItems");
     h2 = document.getElementById("launchStatus");
     pilotStatus = document.getElementById("pilotStatus");
@@ -42,37 +38,36 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     fuelStatus = document.getElementById("fuelStatus");
     cargoStatus = document.getElementById("cargoStatus");
 
-    pilotStatus.innerHTML=`Pilot ${pilot.value} is ready for launch`;
-    copilotStatus.innerHTML = `Copilot ${copilot.value} is ready for launch`;
+    pilotStatus.innerHTML=`Pilot ${pilot} is ready for launch`;
+    copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
 
-    // Empty Fields validation
-    if (validateInput(pilot.value) === "Empty" || validateInput(copilot.value) === "Empty" || validateInput(fuelLevel.value) === "Empty" || validateInput(cargoLevel.value) === "Empty"){
+    // Field validation
+    if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty"){
        alert('Input cannot be empty');
     }
-
-    // }     
-    // else if (validateInput(fuelLevel.value) === "Not a Number" || validateInput(cargoLevel.value) === "Not a Number"){
-    //     alert('Please enter a valid number!');
-    // }     
-    else if (validateInput(fuelLevel.value) === "Is a Number"){
-        if (fuelLevel.value < 10000) {
+    else if (validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number"){
+        alert('Please enter a valid number!');
+    }     
+    else if (validateInput(fuelLevel) === "Is a Number"){
+        if (fuelLevel < 10000) {
             list.style.visibility = "visible";
             fuelStatus.innerHTML = "Fuel level too low for launch";
-            h2.innerHTML = "Shuttle not ready for launch";
+            h2.innerHTML = "Shuttle Not Ready for Launch";
             h2.style.color = "red";
         }
-        else if (validateInput(cargoLevel.value) === "Is a Number"){
-            if (cargoLevel.value > 10000){
-                list.style.visibility = "initial";
+        else if (validateInput(cargoLevel) === "Is a Number"){
+            if (cargoLevel > 10000){
+                list.style.visibility = "visible";
+                fuelStatus.innerHTML="Fuel level high enough for launch";
                 cargoStatus.innerHTML = "Cargo mass too heavy for launch";
-                h2.innerHTML = "Shuttle not ready for launch";
+                h2.innerHTML = "Shuttle Not Ready for Launch";
                 h2.style.color = "red";
             }
         else {
             list.style.visibility = "visible";
             fuelStatus.innerHTML="Fuel level high enough for launch";
             cargoStatus.innerHTML="Cargo mass low enough for launch";
-            h2.innerHTML = "Shuttle is ready for launch";
+            h2.innerHTML = "Shuttle is Ready for Launch";
             h2.style.color = "green";
         }
     }
@@ -85,7 +80,9 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  
      planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
         response.json().then( function(json){
-            //console.log(json);
+            let data = json; 
+            console.log(data);
+            return data;
         })
     });
          //console.log("??", JSON.stringify(planetsReturned,null,2));
@@ -95,7 +92,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  }
  
  function pickPlanet(planets) {
-    console.log("MY Planets: ", planets);
+    console.log(typeof planets);
     let planet = {};
     // Get random number and get planet with that index
     let randomNumber = Math.floor(Math.random()*7);

@@ -25,18 +25,15 @@ window.addEventListener("load", function() {
     let list = this.document.getElementById("faultyItems");
     let form = document.querySelector("form");
         form.addEventListener("submit", function(event) {
-        let pilot = document.querySelector("input[name=pilotName]");
-        let copilot = document.querySelector("input[name=copilotName]");
-        let fuelLevel = document.querySelector("input[name=fuelLevel]");
-        let cargoLevel = document.querySelector("input[name=cargoMass]");
-        // let pilotStatus = document.getElementById("pilotStatus");
-        // let copilotStatus = document.getElementById("copilotStatus");
-        // let fuelStatus = document.getElementById("fuelStatus");
-        // let cargoStatus = document.getElementById("cargoStatus");
+        let pilot = document.getElementsByName("pilotName");
+        let copilot = document.getElementsByName("copilotName");
+        let fuelLevel = document.getElementsByName("fuelLevel");
+        let cargoLevel = document.getElementsByName("cargoMass");
+
 
 
     formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
-        event.preventDefault(); // something like this to prevent using default submit code
+        event.preventDefault();
 
  });
 })
