@@ -122,10 +122,14 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
      let planetsReturned;
  
      planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
-        console.log(JSON.stringify(planetsReturned,null,2));
+        response.json().then( function(json){
+            console.log(json);
+        })
     });
-         console.log(JSON.stringify(planetsReturned,null,2));
+         //console.log("??", JSON.stringify(planetsReturned,null,2));
+         console.log(planetsReturned);
      return planetsReturned;
+     //return response.json();
  }
  
  function pickPlanet(planets) {
@@ -133,6 +137,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     let planet = {};
     // Get random number and get planet with that index
     let randomNumber = Math.floor(Math.random()*7);
+    console.log(randomNumber);
     return planets[randomNumber];
  }
  

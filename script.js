@@ -8,8 +8,8 @@ window.addEventListener("load", function() {
     let listedPlanets;
     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
     let listedPlanetsResponse = myFetch();
+    console.log(listedPlanetsResponse);
     listedPlanetsResponse.then(function (result) {
-        console.log("result =", result);
         listedPlanets = result;
         console.log(listedPlanets);
     }).then(function () {
