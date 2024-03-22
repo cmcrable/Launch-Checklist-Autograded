@@ -50,71 +50,33 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
        alert('Input cannot be empty');
     }
 
-    // // Copilot validation
-    // if (validateInput(copilot.value) === "Empty"){
-    //     //alert('Input cannot be empty');
-    // }
-
-    // Fuel Level validation
-    // if (validateInput(fuelLevel.value) === "Empty"){
-    //     //alert('Input cannot be empty');
     // }     
     // else if (validateInput(fuelLevel.value) === "Not a Number" || validateInput(cargoLevel.value) === "Not a Number"){
     //     alert('Please enter a valid number!');
     // }     
-    /*else*/ if (validateInput(fuelLevel.value) === "Is a Number"){
+    else if (validateInput(fuelLevel.value) === "Is a Number"){
         if (fuelLevel.value < 10000) {
-            list.style="visibility: visible";
+            list.style.visibility = "visible";
             fuelStatus.innerHTML = "Fuel level too low for launch";
             h2.innerHTML = "Shuttle not ready for launch";
-            h2.style="color: red";
+            h2.style.color = "red";
         }
         else if (validateInput(cargoLevel.value) === "Is a Number"){
             if (cargoLevel.value > 10000){
-                list.style="visibility: visible";
+                list.style.visibility = "initial";
                 cargoStatus.innerHTML = "Cargo mass too heavy for launch";
                 h2.innerHTML = "Shuttle not ready for launch";
-                h2.style="color: red";
+                h2.style.color = "red";
             }
         else {
-            list.style="visibility: visible";
+            list.style.visibility = "visible";
             fuelStatus.innerHTML="Fuel level high enough for launch";
             cargoStatus.innerHTML="Cargo mass low enough for launch";
             h2.innerHTML = "Shuttle is ready for launch";
-            h2.style="color: green";
+            h2.style.color = "green";
         }
     }
-
-    // Cargo Level validation
-    // if (validateInput(cargoLevel.value) === "Empty"){
-    //     //alert("Input cannot be empty");
-    // }
-    // else if (validateInput(cargoLevel.value) === "Not a Number"){
-    //     alert("Please enter a valid number!");
-    // }
-    // else if (validateInput(cargoLevel.value) === "Is a Number"){
-    //     if (cargoLevel.value > 10000){
-    //         list.style="visibility: visible";
-    //         cargoStatus.innerHTML = "Cargo mass too heavy for launch";
-    //         h2.innerHTML = "Shuttle not ready for launch";
-    //         h2.style="color: red";
-    //     }
-        // else {
-        //     list.style="visibility: visible";
-        //     cargoStatus.innerHTML="Cargo mass low enough for launch";
-        //     h2.innerHTML = "Shuttle is ready for launch";
-        //     h2.style="color: green";
-        // }
     }
-    // else {
-    //     list.style="visibility: visible";
-    //     fuelStatus.innerHTML="Fuel level high enough for launch";
-    //     cargoStatus.innerHTML="Cargo mass low enough for launch";
-    //     h2.innerHTML = "Shuttle is ready for launch";
-    //     h2.style="color: green";
-    // }
-
-    // draw a table to map out 'if' conditionals
 }
 
  
@@ -123,7 +85,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  
      planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
         response.json().then( function(json){
-            console.log(json);
+            //console.log(json);
         })
     });
          //console.log("??", JSON.stringify(planetsReturned,null,2));
