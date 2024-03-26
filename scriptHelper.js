@@ -41,6 +41,9 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     pilotStatus.innerHTML=`Pilot ${pilot} is ready for launch`;
     copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
 
+    console.log("fuel: ", fuelLevel);
+    console.log("cargo: ", cargoLevel);
+
     // Field validation
     if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty"){
        alert('Input cannot be empty');
@@ -80,42 +83,16 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     //  let planets = [];
  
      planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
-        // const result = response.json();
-        // result.then( function(json){
-        //     console.log(result);
-        //     planets = [json[0].name, json[1].name, json[2].name, json[3].name, json[4].name, json[5].name];
-        //     console.log(planets);
-        //     return planets;
-        // });
-        console.log(response.json);
+
         return response.json();
     })
-    // .then((data) => {
-    //     let planets = data;
-    //     planets.map(function(planet) {
-    //         console.log(planet.name);
-    //         return planet.name;
-    //     })
-    // })
-        .then((data) => {
-        let planets = data;
-        planets.map(function(planet) {
-            console.log(planet);
-            return planet;
-        })
-    })
-         //console.log("??", JSON.stringify(planetsReturned,null,2));
          console.log(planetsReturned);
      return planetsReturned;
-     //return response.json();
  }
  
  function pickPlanet(planets) {
-    console.log(typeof planets);
-    let planet = {};
     // Get random number and get planet with that index
     let randomNumber = Math.floor(Math.random()*7);
-    console.log(randomNumber);
     return planets[randomNumber];
  }
  
