@@ -77,13 +77,33 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  
  async function myFetch() {
      let planetsReturned;
+    //  let planets = [];
  
      planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
-        response.json().then( function(json){
-            console.log([json[0].name, json[1].name, json[2].name, json[3].name, json[4].name, json[5].name]);
-            return result = [json[0].name, json[1].name, json[2].name, json[3].name, json[4].name, json[5].name];
+        // const result = response.json();
+        // result.then( function(json){
+        //     console.log(result);
+        //     planets = [json[0].name, json[1].name, json[2].name, json[3].name, json[4].name, json[5].name];
+        //     console.log(planets);
+        //     return planets;
+        // });
+        console.log(response.json);
+        return response.json();
+    })
+    // .then((data) => {
+    //     let planets = data;
+    //     planets.map(function(planet) {
+    //         console.log(planet.name);
+    //         return planet.name;
+    //     })
+    // })
+        .then((data) => {
+        let planets = data;
+        planets.map(function(planet) {
+            console.log(planet);
+            return planet;
         })
-    });
+    })
          //console.log("??", JSON.stringify(planetsReturned,null,2));
          console.log(planetsReturned);
      return planetsReturned;
