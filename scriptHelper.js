@@ -41,8 +41,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     pilotStatus.innerHTML=`Pilot ${pilot} is ready for launch`;
     copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
 
-    console.log("fuel: ", fuelLevel);
-    console.log("cargo: ", cargoLevel);
 
     // Field validation
     if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty"){
